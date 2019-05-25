@@ -1,0 +1,18 @@
+version: '3'
+services:
+  nginx_gzip:
+    image: fholzer/nginx-brotli
+    container_name: nginx-gzip
+    ports:
+        - '8080:80'
+    volumes:
+        - '~/nginx_brotli_demo/nginx_gzip_conf/nginx.conf:/etc/nginx/nginx.conf:ro'
+        - '~/nginx_brotli_demo/html_static_files:/usr/share/nginx/html:ro'
+  nginx_brotli:
+    image: fholzer/nginx-brotli
+    container_name: nginx-brotli
+    ports:
+        - '8081:80'
+    volumes:
+        - '~/nginx_brotli_demo/nginx_brotli_conf/nginx.conf:/etc/nginx/nginx.conf:ro'
+        - '~/nginx_brotli_demo/html_static_files:/usr/share/nginx/html:ro'
